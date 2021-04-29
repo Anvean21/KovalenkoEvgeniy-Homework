@@ -6,6 +6,6 @@ namespace OOP_Task
 {
     public interface IParser<T> where T : AbstractFile
     {
-        T Parse(string inputString);
+        T Parse(string[] inputString);
     }
 }

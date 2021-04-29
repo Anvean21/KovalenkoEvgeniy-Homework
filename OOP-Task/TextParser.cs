@@ -6,11 +6,10 @@ namespace OOP_Task
 {
     public class TextParser : IParser<AbstractFile>
     {
-        public AbstractFile Parse(string inputString)
+        public AbstractFile Parse(string[] inputString)
         {
             TextFile txt = new TextFile();
-            string[] str = inputString.Split("\r");
-            foreach (var item in str)
+            foreach (var item in inputString)
             {
                 if (item.Contains(".txt"))
                 {

@@ -6,11 +6,10 @@ namespace OOP_Task
 {
     public class ImagesParser : IParser<AbstractFile>
     {
-        public AbstractFile Parse(string inputString)
+        public AbstractFile Parse(string[] inputString)
         {
             ImageFile img = new ImageFile();
-            string[] str = inputString.Split("\r");
-            foreach (var item in str)
+            foreach (var item in inputString)
             {
                 if (item.Contains(".bmp"))
                 {

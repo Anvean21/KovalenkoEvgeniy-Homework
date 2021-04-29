@@ -6,11 +6,10 @@ namespace OOP_Task
 {
     public class VideosParser :  IParser<AbstractFile>
     {
-        public AbstractFile Parse(string inputString)
+        public AbstractFile Parse(string[] inputString)
         {
             VideoFile video = new VideoFile();
-            string[] str = inputString.Split("\r");
-            foreach (var item in str)
+            foreach (var item in inputString)
             {
                 if (item.Contains(".mkv"))
                 {

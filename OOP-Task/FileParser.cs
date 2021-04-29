@@ -13,7 +13,7 @@ namespace OOP_Task
         }
         public void ExecuteParser(string inputFile)
         {
-            Parser.Parse(inputFile);
+            Parser.Parse(inputFile.Split("\r"));
         }
     }
 }
