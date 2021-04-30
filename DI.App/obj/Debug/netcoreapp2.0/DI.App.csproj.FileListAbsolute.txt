@@ -9,3 +9,15 @@ C:\Users\zaruba\Documents\Visual Studio 2017\Projects\School\src\DI\DI.App\bin\D
 C:\Users\zaruba\Documents\Visual Studio 2017\Projects\School\src\DI\DI.App\bin\Debug\netcoreapp2.0\DI.App.pdb
 C:\Users\zaruba\Documents\Visual Studio 2017\Projects\School\src\DI\DI.App\obj\Debug\netcoreapp2.0\DI.App.dll
 C:\Users\zaruba\Documents\Visual Studio 2017\Projects\School\src\DI\DI.App\obj\Debug\netcoreapp2.0\DI.App.pdb
+D:\Anvean\DI.App\DI.App\obj\Debug\netcoreapp2.0\DI.App.csprojAssemblyReference.cache
+D:\Anvean\DI.App\DI.App\obj\Debug\netcoreapp2.0\DI.App.AssemblyInfoInputs.cache
+D:\Anvean\DI.App\DI.App\obj\Debug\netcoreapp2.0\DI.App.AssemblyInfo.cs
+D:\Anvean\DI.App\DI.App\obj\Debug\netcoreapp2.0\DI.App.csproj.CoreCompileInputs.cache
+D:\Anvean\DI.App\DI.App\obj\Debug\netcoreapp2.0\DI.App.dll
+D:\Anvean\DI.App\DI.App\obj\Debug\netcoreapp2.0\DI.App.pdb
+D:\Anvean\DI.App\DI.App\bin\Debug\netcoreapp2.0\DI.App.deps.json
+D:\Anvean\DI.App\DI.App\bin\Debug\netcoreapp2.0\DI.App.runtimeconfig.json
+D:\Anvean\DI.App\DI.App\bin\Debug\netcoreapp2.0\DI.App.runtimeconfig.dev.json
+D:\Anvean\DI.App\DI.App\bin\Debug\netcoreapp2.0\DI.App.dll
+D:\Anvean\DI.App\DI.App\bin\Debug\netcoreapp2.0\DI.App.pdb
+D:\Anvean\DI.App\DI.App\obj\Debug\netcoreapp2.0\DI.App.genruntimeconfig.cache

@@ -6,9 +6,12 @@ namespace DI.App.Services.PL
 {
     public class CommandManager
     {
-        private readonly ICommandProcessor processor = new CommandProcessor();
+        private readonly ICommandProcessor processor;
         private string info;
-
+        public CommandManager(ICommandProcessor processor)
+        {
+            this.processor = processor;
+        }
         public void Start()
         {
             this.SetupInfo();
