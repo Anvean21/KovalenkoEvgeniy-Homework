@@ -13,12 +13,10 @@ namespace OOP_Task
             {
                 if (item.Contains(".bmp"))
                 {
-                    string[] pars = item.Split(new[] { '.', '(', ')', ';' }, StringSplitOptions.RemoveEmptyEntries);
-
-                    img.FileName = AbstractFile.RegexName(item);
-                    img.FileExtension = pars[1];
-                    img.FileSize = pars[2];
-                    img.Resolution = pars[3];
+                    img.FileName = AbstractFile.SearchFileName(item);
+                    img.FileExtension = AbstractFile.SearchFileExtension(item);
+                    img.FileSize = AbstractFile.SearchFileSize(item);
+                    img.Resolution = ImageFile.SearchFileResolution(item);
 
                     img.Print(img);
                 }

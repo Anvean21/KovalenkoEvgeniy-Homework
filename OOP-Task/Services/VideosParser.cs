@@ -13,13 +13,11 @@ namespace OOP_Task
             {
                 if (item.Contains(".mkv"))
                 {
-                    string[] pars = item.Split(new[] {'.', ':', '(', ')', ';', ';' }, StringSplitOptions.RemoveEmptyEntries);
-
-                    video.FileName = AbstractFile.RegexName(item);
-                    video.FileExtension = pars[3];
-                    video.FileSize = pars[4];
-                    video.Resolution = pars[5];
-                    video.Length = pars[6];
+                    video.FileName = AbstractFile.SearchFileName(item);
+                    video.FileExtension = AbstractFile.SearchFileExtension(item);
+                    video.FileSize = AbstractFile.SearchFileSize(item);
+                    video.Resolution = VideoFile.SearchFileResolution(item);
+                    video.Length = VideoFile.SearchFileLenght(item);
 
                     video.Print(video);
                 }

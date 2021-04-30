@@ -6,19 +6,20 @@ namespace OOP_Task
 {
     public class TextParser : IParser<AbstractFile>
     {
+        
         public AbstractFile Parse(string[] inputString)
         {
             TextFile txt = new TextFile();
+
             foreach (var item in inputString)
             {
                 if (item.Contains(".txt"))
                 {
-                    string[] pars = item.Split(new[] { '.', '(', ')', ';' }, StringSplitOptions.RemoveEmptyEntries);
 
-                    txt.FileName = AbstractFile.RegexName(item);
-                    txt.FileExtension = pars[1];
-                    txt.FileSize = pars[2];
-                    txt.FileContent = pars[3];
+                    txt.FileName = AbstractFile.SearchFileName(item);
+                    txt.FileExtension = AbstractFile.SearchFileExtension(item);
+                    txt.FileSize = AbstractFile.SearchFileSize(item);
+                    txt.FileContent = TextFile.SearchFileContent(item);
 
                     txt.Print(txt);
                 }

@@ -6,12 +6,20 @@ namespace OOP_Task
 {
     public class ImageFile : AbstractFile
     {
+        static ImageFile()
+        {
+            Console.WriteLine("Images :");
+        }
         public string Resolution { get; set; }
         public override void Print(AbstractFile file)
         {
-            Console.WriteLine("Image file:");
             base.Print(file);
             Console.Write($"\t\tResolution: {Resolution}\n");
+        }
+        public static string SearchFileResolution(string resolution)
+        {
+            string[] str = resolution.Split(';');
+            return str[1];
         }
     }
 }
