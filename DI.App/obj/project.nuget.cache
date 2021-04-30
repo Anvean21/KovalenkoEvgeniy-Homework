@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "JRRosiFWMZR+lYIK8HWL+QX4uYzBbjkJLijopJji3Uh/+L9shUbvEK6o0cS97kzZRQrMlSDVKUuCb4kTQ+oCmA==",
+  "success": true,
+  "projectFilePath": "D:\\Anvean\\DI.App\\DI.App\\DI.App.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\evgen\\.nuget\\packages\\microsoft.netcore.app\\2.0.0\\microsoft.netcore.app.2.0.0.nupkg.sha512",
+    "C:\\Users\\evgen\\.nuget\\packages\\microsoft.netcore.dotnetapphost\\2.0.0\\microsoft.netcore.dotnetapphost.2.0.0.nupkg.sha512",
+    "C:\\Users\\evgen\\.nuget\\packages\\microsoft.netcore.dotnethostpolicy\\2.0.0\\microsoft.netcore.dotnethostpolicy.2.0.0.nupkg.sha512",
+    "C:\\Users\\evgen\\.nuget\\packages\\microsoft.netcore.dotnethostresolver\\2.0.0\\microsoft.netcore.dotnethostresolver.2.0.0.nupkg.sha512",
+    "C:\\Users\\evgen\\.nuget\\packages\\microsoft.netcore.platforms\\2.0.0\\microsoft.netcore.platforms.2.0.0.nupkg.sha512",
+    "C:\\Users\\evgen\\.nuget\\packages\\netstandard.library\\2.0.0\\netstandard.library.2.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
