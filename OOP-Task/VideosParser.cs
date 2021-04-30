@@ -15,7 +15,7 @@ namespace OOP_Task
                 {
                     string[] pars = item.Split(new[] {'.', ':', '(', ')', ';', ';' }, StringSplitOptions.RemoveEmptyEntries);
 
-                    video.FileName = pars[1] + pars[2];
+                    video.FileName = AbstractFile.RegexName(item);
                     video.FileExtension = pars[3];
                     video.FileSize = pars[4];
                     video.Resolution = pars[5];

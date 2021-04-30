@@ -13,12 +13,12 @@ namespace OOP_Task
             {
                 if (item.Contains(".txt"))
                 {
-                    string[] pars = item.Split(new[] { ':', '.', '(', ')', ';' }, StringSplitOptions.RemoveEmptyEntries);
+                    string[] pars = item.Split(new[] { '.', '(', ')', ';' }, StringSplitOptions.RemoveEmptyEntries);
 
-                    txt.FileName = pars[1];
-                    txt.FileExtension = pars[2];
-                    txt.FileSize = pars[3];
-                    txt.FileContent = pars[4];
+                    txt.FileName = AbstractFile.RegexName(item);
+                    txt.FileExtension = pars[1];
+                    txt.FileSize = pars[2];
+                    txt.FileContent = pars[3];
 
                     txt.Print(txt);
                 }
