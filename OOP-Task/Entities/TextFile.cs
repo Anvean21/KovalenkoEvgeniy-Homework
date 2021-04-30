@@ -16,10 +16,5 @@ namespace OOP_Task
             base.Print(file);
             Console.Write($"\t\tContent: {FileContent}\n");
         }
-        public static string SearchFileContent(string content)
-        {
-            string[] str = content.Split(';');
-            return str[1];
-        }
     }
 }

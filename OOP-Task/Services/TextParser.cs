@@ -19,12 +19,18 @@ namespace OOP_Task
                     txt.FileName = AbstractFile.SearchFileName(item);
                     txt.FileExtension = AbstractFile.SearchFileExtension(item);
                     txt.FileSize = AbstractFile.SearchFileSize(item);
-                    txt.FileContent = TextFile.SearchFileContent(item);
+                    txt.FileContent = SearchFileContent(item);
 
                     txt.Print(txt);
                 }
             }
             return txt;
+        }
+
+        public static string SearchFileContent(string content)
+        {
+            string[] str = content.Split(';');
+            return str[1];
         }
     }
 }

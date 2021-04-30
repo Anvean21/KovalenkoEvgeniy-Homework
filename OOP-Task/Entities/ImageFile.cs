@@ -16,10 +16,5 @@ namespace OOP_Task
             base.Print(file);
             Console.Write($"\t\tResolution: {Resolution}\n");
         }
-        public static string SearchFileResolution(string resolution)
-        {
-            string[] str = resolution.Split(';');
-            return str[1];
-        }
     }
 }

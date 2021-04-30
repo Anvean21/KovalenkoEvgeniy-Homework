@@ -16,13 +16,23 @@ namespace OOP_Task
                     video.FileName = AbstractFile.SearchFileName(item);
                     video.FileExtension = AbstractFile.SearchFileExtension(item);
                     video.FileSize = AbstractFile.SearchFileSize(item);
-                    video.Resolution = VideoFile.SearchFileResolution(item);
-                    video.Length = VideoFile.SearchFileLenght(item);
+                    video.Resolution = SearchFileResolution(item);
+                    video.Length = SearchFileLenght(item);
 
                     video.Print(video);
                 }
             }
             return video;
+        }
+        public static string SearchFileResolution(string resolution)
+        {
+            string[] str = resolution.Split(';');
+            return str[1];
+        }
+        public static string SearchFileLenght(string resolution)
+        {
+            string[] str = resolution.Split(';');
+            return str[2];
         }
     }
 }
