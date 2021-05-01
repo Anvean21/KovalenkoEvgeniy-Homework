@@ -1,10 +1,11 @@
-﻿using System;
+﻿using OOP_Task.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace OOP_Task
 {
-    public class VideosParser :  IParser<AbstractFile>
+    public class VideosParser :  IParser<AbstractFile>, ISearcher
     {
         public AbstractFile Parse(string[] inputString)
         {
@@ -13,9 +14,9 @@ namespace OOP_Task
             {
                 if (item.Contains(".mkv"))
                 {
-                    video.FileName = AbstractFile.SearchFileName(item);
-                    video.FileExtension = AbstractFile.SearchFileExtension(item);
-                    video.FileSize = AbstractFile.SearchFileSize(item);
+                    video.FileName = ISearcher.SearchFileName(item);
+                    video.FileExtension = ISearcher.SearchFileExtension(item);
+                    video.FileSize = ISearcher.SearchFileSize(item);
                     video.Resolution = SearchFileResolution(item);
                     video.Length = SearchFileLenght(item);
 

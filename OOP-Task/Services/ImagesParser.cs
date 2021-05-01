@@ -1,10 +1,11 @@
-﻿using System;
+﻿using OOP_Task.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace OOP_Task
 {
-    public class ImagesParser : IParser<AbstractFile>
+    public class ImagesParser : IParser<AbstractFile>, ISearcher
     {
         public AbstractFile Parse(string[] inputString)
         {
@@ -13,9 +14,9 @@ namespace OOP_Task
             {
                 if (item.Contains(".bmp"))
                 {
-                    img.FileName = AbstractFile.SearchFileName(item);
-                    img.FileExtension = AbstractFile.SearchFileExtension(item);
-                    img.FileSize = AbstractFile.SearchFileSize(item);
+                    img.FileName = ISearcher.SearchFileName(item);
+                    img.FileExtension = ISearcher.SearchFileExtension(item);
+                    img.FileSize = ISearcher.SearchFileSize(item);
                     img.Resolution = SearchFileResolution(item);
 
                     img.Print(img);

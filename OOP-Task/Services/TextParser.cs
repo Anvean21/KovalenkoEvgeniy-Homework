@@ -1,10 +1,11 @@
-﻿using System;
+﻿using OOP_Task.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace OOP_Task
 {
-    public class TextParser : IParser<AbstractFile>
+    public class TextParser : IParser<AbstractFile>, ISearcher
     {
         
         public AbstractFile Parse(string[] inputString)
@@ -16,9 +17,9 @@ namespace OOP_Task
                 if (item.Contains(".txt"))
                 {
 
-                    txt.FileName = AbstractFile.SearchFileName(item);
-                    txt.FileExtension = AbstractFile.SearchFileExtension(item);
-                    txt.FileSize = AbstractFile.SearchFileSize(item);
+                    txt.FileName = ISearcher.SearchFileName(item);
+                    txt.FileExtension = ISearcher.SearchFileExtension(item);
+                    txt.FileSize = ISearcher.SearchFileSize(item);
                     txt.FileContent = SearchFileContent(item);
 
                     txt.Print(txt);

@@ -7,7 +7,7 @@ namespace OOP_Task
     {
         static void Main(string[] args)
         {
-            ConsoleView starst = new ConsoleView();
+            ConsoleView start = new ConsoleView();
         }
     }
 }
