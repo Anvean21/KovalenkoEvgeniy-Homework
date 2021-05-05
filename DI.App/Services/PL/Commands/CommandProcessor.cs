@@ -9,11 +9,12 @@ namespace DI.App.Services.PL
     {
         private readonly Dictionary<int, ICommand> commands = new Dictionary<int, ICommand>();
 
-        public CommandProcessor(ICommand addUsers, ICommand listUsers)
+        public CommandProcessor(List<ICommand> command)
         {
-
-            commands.Add(addUsers.Number, addUsers);
-            commands.Add(listUsers.Number, listUsers);
+            foreach (var item in command)
+            {
+                commands.Add(item.Number, item);
+            }
         }
 
         public void Process(int number)
