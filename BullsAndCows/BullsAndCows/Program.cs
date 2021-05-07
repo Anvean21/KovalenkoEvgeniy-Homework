@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 namespace BullsAndCows
 {
@@ -6,8 +9,11 @@ namespace BullsAndCows
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-            //git check
+
+            var answers = Game.GetAllAnswers();
+            var player = Game.InputNumber();
+            var enemy = Game.GetOneAnswer(answers);
+            Game.Check(player, enemy).ToString();
         }
     }
 }
