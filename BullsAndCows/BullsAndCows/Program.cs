@@ -9,11 +9,20 @@ namespace BullsAndCows
     {
         static void Main(string[] args)
         {
-
-            var answers = Game.GetAllAnswers();
-            var player = Game.InputNumber();
-            var enemy = Game.GetOneAnswer(answers);
-            Game.Check(player, enemy).ToString();
+            Console.WriteLine("Быки и коровы");
+            Console.WriteLine("Желаете загадывать число, или отгадывать? \n1 - загадывать\n2 - отгадывать");
+            switch (Console.ReadLine())
+            {
+                case "1":
+                    Game.ComputerVersusPlayer();
+                    break;
+                case "2":
+                    Game.PlayerVersusComputer();
+                    break;
+                default:
+                    Game.ComputerVersusPlayer();
+                    break;
+            }
         }
     }
 }

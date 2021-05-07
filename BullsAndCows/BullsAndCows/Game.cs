@@ -24,7 +24,7 @@ namespace BullsAndCows
                     list.Add(sb.Append(i.ToString()).ToString());
                 }
             }
-            var answer = new List<String>();
+            var answer = new List<string>();
             foreach (var j in list)
             {
                 if (new string(j.Distinct().ToArray()).Length == 4)
@@ -46,6 +46,8 @@ namespace BullsAndCows
             while (true)
             {
                 Console.WriteLine("Введите 4 неповторяющихся цифры");
+                
+                
                 int num = Int32.Parse((Console.ReadLine().Trim()));
 
                 if (num.ToString().Length != 4)
@@ -83,9 +85,62 @@ namespace BullsAndCows
             return new int[] { bulls, cows };
         }
         //Компьютер удаляет неподходящие ответы из списка возможных
-        public static void DeleteAnswers()
+        public static List<string> DeleteAnswers(List<string> answer,int enemyTry, int bulls, int cows)
         {
 
+            var generalAnswers = answer.ToList();
+            foreach (var item in answer)
+            {
+                int[] cowsAndBulls = Check(Int32.Parse(item), enemyTry);
+                if (cowsAndBulls[0]!= bulls || cowsAndBulls[1] != cows)
+                {
+                    generalAnswers.Remove(item);
+                }
+            }
+            return generalAnswers;
+        }
+
+        public static void PlayerVersusComputer()
+        {
+            var answers = GetAllAnswers();
+            var enemy = GetOneAnswer(answers);
+            while (true)
+            {
+                Console.WriteLine("Ход Игрока");
+                Console.WriteLine("Угадайте число компьюетра");
+                var number = InputNumber();
+                var cowsAndBulls = Check(number, enemy);
+                Console.WriteLine($"Быки - {cowsAndBulls[0]}. Коровы - {cowsAndBulls[1]}");
+                if (cowsAndBulls[0] == 4)
+                {
+                    Console.WriteLine("Победил игрок!");
+                    Console.WriteLine($"Компьютер загадал число {enemy}");
+                    break;
+                }
+            }
+        }
+        public static void ComputerVersusPlayer()
+        {
+            var answers = GetAllAnswers();
+            var player = InputNumber();
+            while (true)
+            {
+                var enemyTry = GetOneAnswer(answers);
+                Console.WriteLine($"Ход компьютера - {enemyTry}");
+
+                var cowsAndBulls = Check(enemyTry, player);
+                Console.WriteLine($"Быки - {cowsAndBulls[0]}. Коровы - {cowsAndBulls[1]}");
+                if (cowsAndBulls[0] == 4)
+                {
+                    Console.WriteLine("Победил Компьютер!");
+                    Console.WriteLine($"Вы загадал число {enemyTry}");
+                    break;
+                }
+                else
+                {
+                    answers = DeleteAnswers(answers, enemyTry, cowsAndBulls[0], cowsAndBulls[1]);
+                }
+            }
         }
     }
 }
