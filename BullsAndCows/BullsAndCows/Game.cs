@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BullsAndCows
 {
-  public static class Game
+    public static class Game
     {
         //Функция создает список всех возможных ответовs
         public static List<string> GetAllAnswers()
@@ -46,10 +46,8 @@ namespace BullsAndCows
             while (true)
             {
                 Console.WriteLine("Введите 4 неповторяющихся цифры");
-                
-                
-                int num = Int32.Parse((Console.ReadLine().Trim()));
 
+                int num = Int32.Parse((Console.ReadLine().Trim()));
                 if (num.ToString().Length != 4)
                 {
                     InputNumber();
@@ -85,14 +83,13 @@ namespace BullsAndCows
             return new int[] { bulls, cows };
         }
         //Компьютер удаляет неподходящие ответы из списка возможных
-        public static List<string> DeleteAnswers(List<string> answer,int enemyTry, int bulls, int cows)
+        public static List<string> DeleteAnswers(List<string> answer, int enemyTry, int bulls, int cows)
         {
-
             var generalAnswers = answer.ToList();
             foreach (var item in answer)
             {
                 int[] cowsAndBulls = Check(Int32.Parse(item), enemyTry);
-                if (cowsAndBulls[0]!= bulls || cowsAndBulls[1] != cows)
+                if (cowsAndBulls[0] != bulls || cowsAndBulls[1] != cows)
                 {
                     generalAnswers.Remove(item);
                 }
