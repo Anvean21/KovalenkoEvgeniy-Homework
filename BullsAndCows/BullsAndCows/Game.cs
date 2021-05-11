@@ -35,10 +35,10 @@ namespace BullsAndCows
             return answer;
         }
         //Выбирает один ответ из списка возможных
-        public static int GetOneAnswer(List<string> answer)
+        public static string GetOneAnswer(List<string> answer)
         {
             var index = new Random().Next(answer.Count);
-            return Int32.Parse(answer[index]);
+            return answer[index];
         }
         //Запрашиваем у пользователя 4 неповторяющиеся цифры
         public static int InputNumber()
@@ -59,36 +59,39 @@ namespace BullsAndCows
             }
         }
         //Сравнивает два числа и сообщает о колитчестве быков и коров
-        public static int[] Check(int number, int trueNumber)
+        public static int[] Check(string trueNumber, string currentAnswer)
         {
             int bulls = 0;
             int cows = 0;
-            char[] inputString = number.ToString().ToCharArray();
-            char[] trueString = trueNumber.ToString().ToCharArray();
+            char[] inputString = currentAnswer.ToCharArray();
+            char[] trueString = trueNumber.ToCharArray();
             for (int i = 0; i < inputString.Length; i++)
             {
                 if (inputString[i] == trueString[i])
                 {
-                    bulls += 1;
-                    continue;
+                    bulls ++;
                 }
-                for (int j = 0; j < trueString.Length; j++)
+                else
                 {
-                    if (inputString[i] == trueString[j])
+                    for (int j = 0; j < trueString.Length; j++)
                     {
-                        cows += 1;
+                        if (inputString[i] == trueString[j])
+                        {
+                            cows++;
+                        }
                     }
                 }
+                
             }
             return new int[] { bulls, cows };
         }
         //Компьютер удаляет неподходящие ответы из списка возможных
-        public static List<string> DeleteAnswers(List<string> answer, int enemyTry, int bulls, int cows)
+        public static List<string> DeleteAnswers(List<string> answer, string currentAnswer, int bulls, int cows)
         {
             var generalAnswers = answer.ToList();
             foreach (var item in answer)
             {
-                int[] cowsAndBulls = Check(Int32.Parse(item), enemyTry);
+                int[] cowsAndBulls = Check(item, currentAnswer);
                 if (cowsAndBulls[0] != bulls || cowsAndBulls[1] != cows)
                 {
                     generalAnswers.Remove(item);
@@ -97,45 +100,33 @@ namespace BullsAndCows
             return generalAnswers;
         }
 
-        public static void PlayerVersusComputer()
-        {
-            var answers = GetAllAnswers();
-            var enemy = GetOneAnswer(answers);
-            while (true)
-            {
-                Console.WriteLine("Ход Игрока");
-                Console.WriteLine("Угадайте число компьюетра");
-                var number = InputNumber();
-                var cowsAndBulls = Check(number, enemy);
-                Console.WriteLine($"Быки - {cowsAndBulls[0]}. Коровы - {cowsAndBulls[1]}");
-                if (cowsAndBulls[0] == 4)
-                {
-                    Console.WriteLine("Победил игрок!");
-                    Console.WriteLine($"Компьютер загадал число {enemy}");
-                    break;
-                }
-            }
-        }
         public static void ComputerVersusPlayer()
         {
             var answers = GetAllAnswers();
-            var player = InputNumber();
             while (true)
             {
-                var enemyTry = GetOneAnswer(answers);
-                Console.WriteLine($"Ход компьютера - {enemyTry}");
+                string currentAnswer = GetOneAnswer(answers);
+                Console.WriteLine($"Ваше число - {currentAnswer} ?");
 
-                var cowsAndBulls = Check(enemyTry, player);
-                Console.WriteLine($"Быки - {cowsAndBulls[0]}. Коровы - {cowsAndBulls[1]}");
-                if (cowsAndBulls[0] == 4)
+                Console.WriteLine("Сколько быков?");
+                int bulls = int.Parse(Console.ReadLine());
+                Console.WriteLine("Сколько коров?");
+                int cows = int.Parse(Console.ReadLine());
+
+                if (answers.Count == 1)
+                {
+                    Console.WriteLine($"Ваше число - {answers[0]}");
+                    return;
+                }
+                else if (bulls == 4)
                 {
                     Console.WriteLine("Победил Компьютер!");
-                    Console.WriteLine($"Вы загадал число {enemyTry}");
-                    break;
+                    Console.WriteLine($"Вы загадал число {currentAnswer} !");
+                    return;
                 }
                 else
                 {
-                    answers = DeleteAnswers(answers, enemyTry, cowsAndBulls[0], cowsAndBulls[1]);
+                    answers = DeleteAnswers(answers, currentAnswer, bulls, cows);
                 }
             }
         }
