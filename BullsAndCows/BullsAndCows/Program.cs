@@ -9,9 +9,11 @@ namespace BullsAndCows
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Быки и коровы");
-          
-                    Game.ComputerVersusPlayer();
+            Console.WriteLine("Быки и корррровы");
+            Game.ComputerVersusPlayer();
+
+            Console.ReadLine();
         }
     }
+        
 }
