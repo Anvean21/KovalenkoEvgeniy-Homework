@@ -16,23 +16,41 @@ namespace CVSFileEditor
         static void Main(string[] args)
         {
             var persons = PersonList.GetListPerson();
-
-            var csv = new StringBuilder();
+            var personsProperties = typeof(Person).GetProperties();
 
             Console.WriteLine("Введите поля");
             var str = Console.ReadLine().Split(",");
-            foreach (var item in persons)
+
+            foreach (var property in personsProperties)
             {
-                Print(() => item.Name, str, csv);
-                Print(() => item.Address, str, csv);
-                Print(() => item.Age, str, csv);
-                Print(() => item.EyeColor, str, csv);
-                Print(() => item.Gender, str, csv);
-                Print(() => item.Salary, str, csv);
-                Print(() => item.Company, str, csv);
-                csv.Append("\n");
+                foreach (var usersPropertie in str)
+                {
+                    using (StreamWriter sw = new StreamWriter("file.csv", true))
+                    {
+                        if (property.Name == usersPropertie)
+                        {
+                            var fileprop = string.Join("\n",persons.Select(x => typeof(Person).GetProperty(usersPropertie).GetValue(x)+" - "+property.Name))+"\n";
+                            sw.WriteLine( fileprop);
+                        }
+                    }
+                }
             }
-            File.AppendAllText("D:\\file.csv", csv.ToString());
+
+            //Вариант рабочий, но не красивый.
+
+            //var csv = new StringBuilder();
+            //foreach (var item in persons)
+            //{
+            //    Print(() => item.Name, str, csv);
+            //    Print(() => item.Address, str, csv);
+            //    Print(() => item.Age, str, csv);
+            //    Print(() => item.EyeColor, str, csv);
+            //    Print(() => item.Gender, str, csv);
+            //    Print(() => item.Salary, str, csv);
+            //    Print(() => item.Company, str, csv);
+            //    csv.Append("\n");
+            //}
+            //File.AppendAllText("D:\\file.csv", csv.ToString());
 
         }
         static void Print<T>(Expression<Func<T>> expression, string[] str, StringBuilder csv)
@@ -42,7 +60,7 @@ namespace CVSFileEditor
             {
                 if (item == ((MemberExpression)expression.Body).Member.Name)
                 {
-                    Console.WriteLine("Цикл отработал - " + item);
+                    //Console.WriteLine("Цикл отработал - " + item);
                     csv.Append(((MemberExpression)expression.Body).Member.Name + " - " + expression.Compile()());
                     csv.Append(",");
                 }
