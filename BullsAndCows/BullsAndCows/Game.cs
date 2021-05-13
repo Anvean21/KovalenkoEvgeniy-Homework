@@ -76,7 +76,7 @@ namespace BullsAndCows
                 {
                     for (int j = 0; j < possible.Length; j++)
                     {
-                        if (current[i] == possible[j])
+                        if (current[i] == possible[j] && current[i] != possible[i])
                         {
                             cows++;
                         }
@@ -89,10 +89,17 @@ namespace BullsAndCows
         static List<string> GetAllAnswers()
         {
             var list = new List<string>();
-            for (int i = 1000; i < 10000; i++)
+            for (int i = 0; i < 10000; i++)
             {
                 StringBuilder sb = new StringBuilder();
-
+                if (i.ToString().Length == 1)
+                {
+                    list.Add(sb.Append("000" + i.ToString()).ToString());
+                }
+                if (i.ToString().Length == 2)
+                {
+                    list.Add(sb.Append("00" + i.ToString()).ToString());
+                }
                 if (i.ToString().Length == 3)
                 {
                     list.Add(sb.Append("0" + i.ToString()).ToString());
@@ -102,15 +109,15 @@ namespace BullsAndCows
                     list.Add(sb.Append(i.ToString()).ToString());
                 }
             }
-            var answer = new List<string>();
-            foreach (var j in list)
-            {
-                if (new string(j.Distinct().ToArray()).Length == 4)
-                {
-                    answer.Add(j);
-                }
-            }
-            return answer;
+            //var answer = new List<string>();
+            //foreach (var j in list)
+            //{
+            //    if (new string(j.Distinct().ToArray()).Length == 4)
+            //    {
+            //        answer.Add(j);
+            //    }
+            //}
+            return list;
         }
 
         //get one answer from possible list
