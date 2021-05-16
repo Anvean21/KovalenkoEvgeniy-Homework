@@ -12,17 +12,24 @@ namespace CsvEditor
             var personsProperties = typeof(Person).GetProperties();
             Console.WriteLine("Введите поля");
             var userProperties = Console.ReadLine().Split(",");
-            foreach (var property in personsProperties)
+            const string symbol = ";";
+            using (StreamWriter stream = new StreamWriter("file.csv", true))
             {
-                foreach (var usersPropertie in userProperties)
+                foreach (var input in userProperties.Select(x => x + symbol))
                 {
-                    using (StreamWriter sw = new StreamWriter("file.csv", true))
+                    Console.Write(input);
+                    stream.Write(input);
+                }
+                Console.WriteLine();
+                foreach (var property in people)
+                {
+                    Console.WriteLine();
+                    stream.WriteLine();
+                    foreach (var usersPropertie in userProperties)
                     {
-                        if (property.Name == usersPropertie)
-                        {
-                            var fileprop = string.Join("\n", people.Select(x => typeof(Person).GetProperty(usersPropertie).GetValue(x) + " - " + property.Name)) + "\n";
-                            sw.WriteLine(fileprop);
-                        }
+                        var fileprop = property.GetType().GetProperty(usersPropertie).GetValue(property, null);
+                        Console.Write(fileprop + symbol);
+                        stream.Write(fileprop + symbol);
                     }
                 }
             }
