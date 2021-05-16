@@ -24,6 +24,11 @@ namespace LinqHomework
             LinqTask.OldestActorsNames();
             LinqTask.ArticlsByAuthor();
             LinqTask.ArticlesAndFilms();
+            LinqTask.ActorsNamesDiffLetters();
+            LinqTask.SortedArticls();
+            LinqTask.ActorFilms();
+            LinqTask.SumOfPages();
+            LinqTask.DictionaryOfAuthors();
         }
     }
 }
