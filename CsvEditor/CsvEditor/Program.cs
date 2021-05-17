@@ -6,16 +6,18 @@ namespace CsvEditor
 {
     class Program
     {
+        const string CsvSymbol = ";";
+        const char SplitSymbol = ',';
+        const string FileName = "file.csv";
         static void Main(string[] args)
         {
             var people = PeopleList.GetPeople();
             var personsProperties = typeof(Person).GetProperties();
-            Console.WriteLine("Введите поля");
-            var userProperties = Console.ReadLine().Split(",");
-            const string symbol = ";";
-            using (StreamWriter stream = new StreamWriter("file.csv", true))
+            Console.Write("Введите поля через запятую : ");
+            var userProperties = Console.ReadLine().Split(SplitSymbol);
+            using (StreamWriter stream = new StreamWriter(FileName, true))
             {
-                foreach (var input in userProperties.Select(x => x + symbol))
+                foreach (var input in userProperties.Select(x => x + CsvSymbol))
                 {
                     Console.Write(input);
                     stream.Write(input);
@@ -28,8 +30,8 @@ namespace CsvEditor
                     foreach (var usersPropertie in userProperties)
                     {
                         var fileprop = property.GetType().GetProperty(usersPropertie).GetValue(property, null);
-                        Console.Write(fileprop + symbol);
-                        stream.Write(fileprop + symbol);
+                        Console.Write(fileprop + CsvSymbol);
+                        stream.Write(fileprop + CsvSymbol);
                     }
                 }
             }
