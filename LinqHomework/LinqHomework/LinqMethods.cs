@@ -10,7 +10,7 @@ namespace LinqHomework
         public static void From1To50()
         {
             Console.WriteLine("From 1 to 50");
-            Console.WriteLine(String.Join(", ", Enumerable.Range(10,50).Where(x => x<=50)));
+            Console.WriteLine(String.Join(", ", Enumerable.Range(10,41)));
             Console.WriteLine("\n____________________________________________________________");
 
         }
