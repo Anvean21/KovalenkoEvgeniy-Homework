@@ -10,31 +10,20 @@ namespace LinqHomework
         public static void From1To50()
         {
             Console.WriteLine("From 1 to 50");
-
-            foreach (var item in Enumerable.Range(10, 50).Where(x => x <= 50).Select(x => x + ", "))
-            {
-                Console.Write(item);
-            }
+            Console.WriteLine(String.Join(", ", Enumerable.Range(10,50).Where(x => x<=50)));
             Console.WriteLine("\n____________________________________________________________");
 
         }
         public static void ThreeDivided()
         {
             Console.WriteLine("divided on 3");
-
-            foreach (var item in Enumerable.Range(10, 40).Where(x => x % 3 == 0).Select(x => x + ", "))
-            {
-                Console.Write(item);
-            }
+            Console.WriteLine(String.Join(", ", Enumerable.Range(10, 40).Where(x => x % 3 == 0)));
             Console.WriteLine("\n____________________________________________________________");
         }
         public static void LinqRepeat()
         {
             Console.WriteLine("10 Linq");
-            foreach (string s in Enumerable.Repeat("Linq", 10).Select(x => x + ". "))
-            {
-                Console.Write(s);
-            }
+            Console.WriteLine(String.Join(", ", Enumerable.Repeat("Linq", 10)));
             Console.WriteLine("\n____________________________________________________________");
         }
         public static void WordsContains()
@@ -42,10 +31,7 @@ namespace LinqHomework
             Console.WriteLine("Words whitch contains 'a' ");
 
             string[] stringArray = { "aaa", "abb", "ccc", "dap" };
-            foreach (var word in stringArray.Where(x => x.Contains('a')))
-            {
-                Console.Write(word + ", ");
-            }
+            Console.WriteLine(String.Join(", ", stringArray.Where(x => x.Contains('a'))));
             Console.WriteLine("\n____________________________________________________________");
         }
         public static void LetterCount()
