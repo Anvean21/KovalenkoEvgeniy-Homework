@@ -27,7 +27,7 @@ namespace LinqHomework
 
         public static void ActorsName()
         {
-            foreach (var actorName in data.Where(x => x is Film).Cast<Film>().SelectMany(x => x.Actors.Select(x => x.Name + ", ")).Distinct())
+            foreach (var actorName in data.OfType<Film>().SelectMany(x => x.Actors.Select(x => x.Name + ", ")).Distinct())
             {
                 Console.Write(actorName);
             }
@@ -35,12 +35,12 @@ namespace LinqHomework
         }
         public static void ActorsAugustBirthday()
         {
-            Console.WriteLine(data.Where(x => x is Film).Cast<Film>().Select(x => x.Actors.Where(x => x.Birthdate.Month == 8)).Count());
+            Console.WriteLine(data.OfType<Film>().Select(x => x.Actors.Where(x => x.Birthdate.Month == 8)).Count());
             Console.WriteLine("______________________");
         }
         public static void OldestActorsNames()
         {
-            foreach (var actorName in data.Where(x => x is Film).Cast<Film>().SelectMany(x => x.Actors).OrderBy(x => x.Birthdate).Take(2).Select(x => x.Name + " "))
+            foreach (var actorName in data.OfType<Film>().SelectMany(x => x.Actors).OrderBy(x => x.Birthdate).Take(2).Select(x => x.Name + " "))
             {
                 Console.Write(actorName);
             }
@@ -48,7 +48,7 @@ namespace LinqHomework
         }
         public static void ArticlsByAuthor()
         {
-            foreach (var articles in data.Where(x => x is Article).Cast<Article>().GroupBy(x => x.Author).ToDictionary(x => x.Key, x => x.Count()))
+            foreach (var articles in data.OfType<Article>().GroupBy(x => x.Author).ToDictionary(x => x.Key, x => x.Count()))
             {
                 Console.Write(articles);
             }
@@ -56,12 +56,12 @@ namespace LinqHomework
         }
         public static void ArticlesAndFilms()
         {
-            foreach (var articles in data.Where(x => x is Article).Cast<Article>().GroupBy(x => x.Author).ToDictionary(x => x.Key, x => x.Count()))
+            foreach (var articles in data.OfType<Article>().GroupBy(x => x.Author).ToDictionary(x => x.Key, x => x.Count()))
             {
                 Console.Write(articles);
             }
             Console.WriteLine();
-            foreach (var films in data.Where(x => x is Film).Cast<Film>().GroupBy(x => x.Author).ToDictionary(x => x.Key, x => x.Count()))
+            foreach (var films in data.OfType<Film>().GroupBy(x => x.Author).ToDictionary(x => x.Key, x => x.Count()))
             {
                 Console.Write(films);
             }
@@ -69,8 +69,7 @@ namespace LinqHomework
         }
         public static void ActorsNamesDiffLetters()
         {
-            //Console.WriteLine(distinctList);
-            foreach (var artor in data.Where(x => x is Film).Cast<Film>().SelectMany(x => x.Actors.GroupBy(x => x.Name)
+            foreach (var artor in data.OfType<Film>().SelectMany(x => x.Actors.GroupBy(x => x.Name)
             .ToDictionary(x => x.Key, x => x.Key.Distinct().Count())).Distinct())
             {
                 Console.Write(artor);
@@ -81,7 +80,7 @@ namespace LinqHomework
         public static void SortedArticls()
         {
             int i = 0;
-            foreach (var article in data.Where(x => x is Article).Cast<Article>().OrderBy(x => x.Author).ThenBy(x => x.Pages).Select(x => $"{++i} - {x.Name}\n"))
+            foreach (var article in data.OfType<Article>().OrderBy(x => x.Author).ThenBy(x => x.Pages).Select(x => $"{++i} - {x.Name}\n"))
             {
                 Console.Write(article);
             }
@@ -89,11 +88,11 @@ namespace LinqHomework
         }
         public static void ActorFilms()
         {
-            var actorsAndFilms = data.Where(x => x is Film).Cast<Film>().SelectMany(x => x.Actors.Select(name => name.Name)).Distinct().GroupBy(g => g)
+            var actorsAndFilms = data.OfType<Film>().SelectMany(x => x.Actors.Select(name => name.Name)).Distinct().GroupBy(g => g)
                 .Select(actor => new
                 {
                     Actor = actor.Key,
-                    Films = string.Join(", ", data.Where(x => x is Film).Cast<Film>().Where(x => x.Actors.Any(x => x.Name == actor.Key))
+                    Films = string.Join(", ", data.OfType<Film>().Where(x => x.Actors.Any(x => x.Name == actor.Key))
                     .Select(x => new
                     {
                         x.Name
@@ -109,17 +108,17 @@ namespace LinqHomework
         }
         public static void SumOfPages()
         {
-            Console.WriteLine(data.Where(x => x is Article).Cast<Article>().Sum(x => x.Pages));
-            Console.WriteLine(data.Where(x => x is List<int>).Cast<List<int>>().Sum(x => x.Sum()));
+            Console.WriteLine(data.OfType<Article>().Sum(x => x.Pages));
+            Console.WriteLine(data.OfType<List<int>>().Sum(x => x.Sum()));
             Console.WriteLine("\n______________________");
         }
         public static void DictionaryOfAuthors()
         {
-            var authorsAndArticles = data.Where(x => x is Article).Cast<Article>().Select(x => x.Author).Distinct().GroupBy(g => g)
+            var authorsAndArticles = data.OfType<Article>().Select(x => x.Author).Distinct().GroupBy(g => g)
                    .Select(author => new
                    {
                        Author = author.Key,
-                       Articles = string.Join(", ", data.Where(x => x is Article).Cast<Article>().Where(x => x.Author == author.Key)
+                       Articles = string.Join(", ", data.OfType<Article>().Where(x => x.Author == author.Key)
                        .Select(x => new
                        {
                            ArticleName = x.Name
