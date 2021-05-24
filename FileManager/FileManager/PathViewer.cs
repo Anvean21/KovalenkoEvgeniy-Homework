@@ -11,6 +11,9 @@ namespace FileManager.Readers
     {
         private string currentPath;
         public IEnumerable<Type> fileReaders;
+        private static readonly string exit = "exit";
+        private static readonly string back = "cd..";
+        private static readonly string splitSymbol = @"\";
 
         public PathViewer(string basePath = @"c:\")
         {
@@ -26,13 +29,15 @@ namespace FileManager.Readers
         public void Display()
         {
             TryDisplay();
+
             var directories = Directory.EnumerateDirectories(currentPath)
                 .Select(d => new DirectoryInfo(d)).OrderBy(o => o.Name).Cast<FileSystemInfo>()
                 .Concat(Directory.EnumerateFiles(currentPath).Select(f => new FileInfo(f)).OrderBy(o => o.Name));
+
             Console.Clear();
             Console.WriteLine(currentPath);
 
-            foreach (var d in directories.Where(x => !x.Attributes.HasFlag(FileAttributes.Hidden)))
+            foreach (var d in directories)
             {
                 Console.WriteLine($"\t{d.Name}");
             }
@@ -57,14 +62,14 @@ namespace FileManager.Readers
 
         public void Run(string directoryName)
         {
-            if (directoryName == "exit")
+            if (directoryName == exit)
             {
-                System.Environment.Exit(0);
+                Environment.Exit(0);
             }
-            else if (directoryName == "cd..")
+            else if (directoryName == back)
             {
-                var previousPath = currentPath.Split(@"\").LastOrDefault();
-                var newPath = Path.GetFullPath(currentPath.Replace(previousPath, ""));
+                var previousPath = currentPath.Split(splitSymbol).LastOrDefault();
+                var newPath = Path.GetFullPath(currentPath.Replace(previousPath, string.Empty));
                 if (Directory.Exists(newPath) || File.Exists(newPath))
                 {
                     currentPath = newPath;

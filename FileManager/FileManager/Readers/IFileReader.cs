@@ -7,7 +7,7 @@ namespace FileManager
     public interface IFileReader
     {
         public string GetFile(string path);
-        public int Count { get;}
-        public string FileExtension { get;}
+        public int Count { get; }
+        public string FileExtension { get; }
     }
 }

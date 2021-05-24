@@ -17,10 +17,10 @@ namespace FileManager
             var readCount = 0;
             using (var stream = File.OpenRead(path))
             {
-               readCount = stream.Read(buffer, 0, Count);
+                readCount = stream.Read(buffer, 0, Count);
             }
             return BitConverter.ToString(buffer, 0, readCount).Replace('-', ' ');
-           
+
         }
     }
 }

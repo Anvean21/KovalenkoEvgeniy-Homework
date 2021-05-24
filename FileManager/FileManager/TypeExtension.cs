@@ -4,7 +4,7 @@ using System.Text;
 
 namespace FileManager
 {
-   public static class TypeExtension
+    public static class TypeExtension
     {
         public static T CreateInstance<T>(this Type type) where T : class
         {

@@ -8,7 +8,6 @@ namespace FileManager
     public class TxtReader : IFileReader
     {
         public int Count => 1024;
-
         public string FileExtension => ".txt";
 
         public string GetFile(string path)
