@@ -15,66 +15,103 @@ namespace TDDTask.Tests
         [Test]
         public void TDDTask_StringCalculator_Add_EmptyInputReturnZero()
         {
-            var result = stringCalculator.Add(string.Empty);
+            var testInput = string.Empty;
+
+            var result = stringCalculator.Add(testInput);
+
             Assert.AreEqual(0, result);
         }
 
         [Test]
-        public void TDDTask_StringCalculator_Add_AnyQuantityOfNumbersWithDelimiter()
+        public void TDDTask_StringCalculator_Add_AnyQuantityOfNumbersWithDelimiterReturnNumbersSum()
         {
-            var result = stringCalculator.Add("1,2,3");
+            var testInput = "1,2,3";
+
+            var result = stringCalculator.Add(testInput);
+
             Assert.AreEqual(6, result);
         }
 
         [Test]
-        public void TDDTask_StringCalculator_Add_NumsWithDelimiterReturnValidResult()
+        public void TDDTask_StringCalculator_Add_NumbersWithTwoDelimitersReturnSumOfNumbers()
         {
-            var result = stringCalculator.Add("1\n2,3");
+            var testInput = "1\n2,3";
+
+            var result = stringCalculator.Add(testInput);
+
             Assert.AreEqual(6, result);
         }
 
         [Test]
-        public void TDDTask_StringCalculator_Add_NumsWithCustomDelimeter()
+        public void TDDTask_StringCalculator_Add_ReturnNumbersSumWithCustomDelimiter()
         {
-            var result = stringCalculator.Add("//;\n1;2;3");
+            var testInput = "//;\n1;2;3";
+
+            var result = stringCalculator.Add(testInput);
+
             Assert.AreEqual(6, result);
         }
 
         [Test]
-        public void TDDTask_StringCalculator_Add_NegativeNumberException()
+        public void TDDTask_StringCalculator_Add_ReturnExceptionIfNumsAreNegative()
         {
-            Assert.AreEqual("negatives not allowed -2 -3",
-                Assert.Catch(() => stringCalculator.Add("1,-2,-3")).Message);
+            var testInput = "1,-2,-3";
+
+            var exceptionMessage = Assert.Catch(() => stringCalculator.Add(testInput)).Message;
+
+            Assert.AreEqual("negatives not allowed -2 -3", exceptionMessage);
         }
 
         [Test]
-        public void TDDTask_StringCalculator_Add_CountOfCallingMethod()
+        public void TDDTask_StringCalculator_Add_ReturnCountOfCallingMethod()
         {
-            stringCalculator.Add(string.Empty);
-            stringCalculator.Add("1\n2,3");
-            stringCalculator.Add("//;\n1;2;3");
+            var testInput = string.Empty;
+            var testInput2 = "1\n2,3";
+            var testInput3 = "//;1\n2,3";
 
-            Assert.AreEqual(3, stringCalculator.GetCalledCount()-1);
+            stringCalculator.Add(testInput);
+            stringCalculator.Add(testInput2);
+            stringCalculator.Add(testInput3);
+
+            Assert.AreEqual(3, stringCalculator.GetCalledCount());
         }
 
         [Test]
-        public void TDDTask_StringCalculator_Add_SkipNumsOver1000()
+        public void TDDTask_StringCalculator_Add_ReturnSumOfNumbersAndSkipNumbersOver1000()
         {
-            var result = stringCalculator.Add("1,2,3,1001");
+            var testInput = "1,2,3,1001";
+
+            var result = stringCalculator.Add(testInput);
+
             Assert.AreEqual(6, result);
         }
 
         [Test]
-        public void TDDTask_StringCalculator_Add_CustomDelimetrLenght()
+        public void TDDTask_StringCalculator_Add_ReturnSumOfNumbersWithCustomDelimiterLenght()
         {
-            var result = stringCalculator.Add("//***\n1***2***3");
+            var testInput = "//***\n1***2***3";
+
+            var result = stringCalculator.Add(testInput);
+
             Assert.AreEqual(6, result);
         }
 
         [Test]
-        public void TDDTask_StringCalculator_Add_FewDelimeters()
+        public void TDDTask_StringCalculator_Add_ReturnSumOfNumbersWithFewDelimiters()
         {
-            var result = stringCalculator.Add("//[*][%]\n1*2%3");
+            var testInput = "//[*][%]\n1*2%3";
+
+            var result = stringCalculator.Add(testInput);
+
+            Assert.AreEqual(6, result);
+        }
+        [Test]
+        public void TDDTask_StringCalculator_Add_ReturnSumOfNumbersWithFewDelimitersWithCustomLenght()
+        {
+            var testInput = "//[***][%%]\n1***2%%3";
+
+            var result = stringCalculator.Add(testInput);
+
             Assert.AreEqual(6, result);
         }
     }

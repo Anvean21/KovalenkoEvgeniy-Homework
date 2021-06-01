@@ -7,13 +7,13 @@ namespace TDDTask
 {
     public class StringCalculator
     {
-        public event Action<string, int> AddOccured;
+        private event Action<string, int> AddOccured;
 
-        public int Count { get; set; }
+        private int Count { get; set; }
 
         public StringCalculator()
         {
-            AddOccured += (str, integer) => { };
+            AddOccured += (str, integer) => { Console.WriteLine($"Теперь тут что-то делается :)\n{str} - {integer}"); };
         }
 
         public int GetCalledCount()
