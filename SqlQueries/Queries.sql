@@ -27,7 +27,7 @@ Where SalesLT.Product.Weight BETWEEN 2000 AND 5000
 
 Select SalesLT.Product.ProductID, SalesLT.Product.Name, SalesLT.Product.ProductNumber 
 from SalesLT.Product
-Where SalesLT.Product.ProductNumber LIKE 'BK%' or SalesLT.Product.ProductNumber LIKE 'BB%'
+Where SalesLT.Product.ProductNumber LIKE 'B[K,B]%'
 
 Select SalesLT.Product.ProductID, SalesLT.Product.Name, SalesLT.Product.ProductNumber 
 from SalesLT.Product
@@ -119,19 +119,18 @@ JOIN SalesLT.SalesOrderDetail sale ON product.ProductID = sale.ProductID
 Where Product.SellEndDate < GETDATE()
 Group By product.ProductCategoryID, category.Name
 
-Select * FROM SalesLT.Customer WHERE CustomerID in(
-SELECT distinct customer.CustomerID FROM SalesLT.Customer customer
-JOIN SalesLT.SalesOrderHeader salesHeader ON salesHeader.CustomerID = customer.CustomerID
-JOIN SalesLT.SalesOrderDetail salesDetail ON salesDetail.SalesOrderID  = salesHeader.SalesOrderID
-GROUP BY customer.CustomerID 
-HAVING  MAX(salesDetail.UnitPriceDiscount * 100 ) > 4)
+Select Customer.FirstName, Max(detail.UnitPriceDiscount) 
+from SalesLT.Customer as customer
+JOIN SalesLT.SalesOrderHeader as header on header.CustomerID = customer.CustomerID
+JOIN SalesLT.SalesOrderDetail as detail on detail.SalesOrderID = header.SalesOrderID
+WHERE detail.UnitPriceDiscount >= 0.40
+GROUP BY customer.FirstName
 
-SELECT CustomerID, customer.FirstName, customer.MiddleName, customer.LastName from SalesLT.Customer 
-WHERE CustomerID In( SELECT DISTINCT customer.CustomerID from SalesLT.Customer customer
+SELECT Customer.CustomerID, Sum(salesHeader.TotalDue) from SalesLT.Customer 
 JOIN SalesLT.SalesOrderHeader salesHeader ON salesHeader.CustomerID = customer.CustomerID
 JOIN SalesLT.SalesOrderDetail salesDetail ON salesDetail.SalesOrderID  = salesHeader.SalesOrderID
 GROUP BY customer.CustomerID
-HAVING  SUM(salesDetail.UnitPrice) > 15000)
+HAVING  SUM(salesDetail.LineTotal) > 15000
 
 
 
