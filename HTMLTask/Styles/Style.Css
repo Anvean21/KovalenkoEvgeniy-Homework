@@ -1,0 +1,28 @@
+.firstHeader{
+    width: 100%; text-align: right; color: red;
+}
+.secondHeader{
+    color: green;
+}
+.liColor{
+    color: blue;
+}
+.mainWords{
+    color: red; font-size: larger;
+}
+.imageRepeat{
+    background-position: right;
+    background-repeat: repeat-y;
+    background-image: url("/Images/Screenshot_2.png");
+}
+.menu{
+    color:honeydew;
+    width: 130px;
+}
+.menuItem{
+    padding: 2px;
+    border: 1px;
+    margin-bottom: 2px;
+    background-color: gray;
+    border: 1px solid black;
+}
