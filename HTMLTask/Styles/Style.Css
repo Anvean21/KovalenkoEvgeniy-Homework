@@ -1,0 +1,69 @@
+.green{
+    color:green;
+}
+.red {
+    color:red;
+}
+.yellow {
+    color:yellow;
+}
+.blue{
+    color:blue;
+}
+.halfwidth{
+    width: 50%;
+}
+.imageFloat{
+    float: left;
+}
+.borderStyle{
+    width: 50%;
+    border: 2px solid black; 
+    margin: 30px 30px;
+}
+.topicStyle{
+    text-align: center; 
+    padding: 10px;
+}
+.smallBox{
+    width: 5%; 
+    border: 1px solid black; 
+    justify-content: center;
+    display: grid;
+}
+
+.firstHeader{
+    width: 100%; text-align: right; color: red;
+}
+.secondHeader{
+    color: green;
+}
+
+.mainWords{
+    color: red; font-size: larger;
+}
+.imageRepeat{
+    background-position: right;
+    background-repeat: repeat-y;
+    background-image: url("/Images/Screenshot_2.png");
+}
+.menu{
+    color:honeydew;
+    width: 130px;
+}
+.menuItem{
+    padding: 2px;
+    border: 1px;
+    margin-bottom: 2px;
+    background-color: gray;
+    border: 1px solid black;
+}
+.greenLighter{
+    width: 50px; height: 50px; border-radius: 50%; background-color: green;border: 1px solid black;
+}
+.yellowLighter{
+    margin-top: -5px; width: 50px; height: 50px; border-radius: 50%; background-color: yellow;border: 1px solid black;
+}
+.redLighter{
+    margin-top: -5px; width: 50px; height: 50px; border-radius: 50%; background-color: red;border: 1px solid black;
+}
