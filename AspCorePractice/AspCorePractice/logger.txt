@@ -1,0 +1,114 @@
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: D:\Anvean\DI.App\AspCorePractice\AspCorePractice
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: D:\Anvean\DI.App\AspCorePractice\AspCorePractice
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: D:\Anvean\DI.App\AspCorePractice\AspCorePractice
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: D:\Anvean\DI.App\AspCorePractice\AspCorePractice
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: D:\Anvean\DI.App\AspCorePractice\AspCorePractice
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: D:\Anvean\DI.App\AspCorePractice\AspCorePractice
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: D:\Anvean\DI.App\AspCorePractice\AspCorePractice
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: D:\Anvean\DI.App\AspCorePractice\AspCorePractice
+The view 'SignIn' was not found. Searched locations: /Views/User/SignIn.cshtml, /Views/Shared/SignIn.cshtml
+An unhandled exception has occurred while executing the request.
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: D:\Anvean\DI.App\AspCorePractice\AspCorePractice
+The view 'SignIn' was not found. Searched locations: /Views/User/SignIn.cshtml, /Views/Shared/SignIn.cshtml
+An unhandled exception has occurred while executing the request.
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: D:\Anvean\DI.App\AspCorePractice\AspCorePractice
+The view 'SiginIn' was not found. Searched locations: /Views/User/SiginIn.cshtml, /Views/Shared/SiginIn.cshtml
+An unhandled exception has occurred while executing the request.
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: D:\Anvean\DI.App\AspCorePractice\AspCorePractice
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: D:\Anvean\DI.App\AspCorePractice\AspCorePractice
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: D:\Anvean\DI.App\AspCorePractice\AspCorePractice
+LogInformation /hello
+Exception /hello
+An unhandled exception has occurred while executing the request.
+LogInformation /hello
+Exception /hello
+An unhandled exception has occurred while executing the request.
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: D:\Anvean\DI.App\AspCorePractice\AspCorePractice
+LogInformation /hello
+Exception /hello
+LogInformation /hello.json
+Exception /hello.json
+An unhandled exception has occurred while executing the request.
+The response has already started, the error page middleware will not be executed.
+Connection id "0HMA31DQNQAS9", Request id "0HMA31DQNQAS9:00000005": An unhandled exception was thrown by the application.
+LogInformation /hello.json
+Exception /hello.json
+An unhandled exception has occurred while executing the request.
+The response has already started, the error page middleware will not be executed.
+Connection id "0HMA31DQNQAS9", Request id "0HMA31DQNQAS9:00000007": An unhandled exception was thrown by the application.
+LogInformation /hello
+Exception /hello
+LogInformation /hello.json
+Exception /hello.json
+An unhandled exception has occurred while executing the request.
+The response has already started, the error page middleware will not be executed.
+Connection id "0HMA31DQNQAS9", Request id "0HMA31DQNQAS9:0000000B": An unhandled exception was thrown by the application.
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: D:\Anvean\DI.App\AspCorePractice\AspCorePractice
+LogInformation /hello
+Exception /hello
+LogInformation /hello.json
+Exception /hello.json
+An unhandled exception has occurred while executing the request.
+The response has already started, the error page middleware will not be executed.
+Connection id "0HMA31EDRLBJC", Request id "0HMA31EDRLBJC:00000005": An unhandled exception was thrown by the application.
+Application is shutting down...
