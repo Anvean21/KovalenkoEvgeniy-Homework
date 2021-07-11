@@ -4,8 +4,10 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -15,28 +17,51 @@ namespace AspCorePractice.Controllers
     public class UserController : Controller
     {
         AspCoreContext db;
-        public UserController(AspCoreContext db)
+        private readonly ILogger<UserController> _logger;
+
+        public UserController(AspCoreContext db, ILogger<UserController> _logger)
         {
             this.db = db;
+            this._logger = _logger;
+        }
+
+        public IActionResult ExceptionView()
+        {
+            try
+            {
+                int y = 0;
+                int i = 2 / y;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                throw;
+            }
+            return View();
+        }
+
+        public IActionResult Index()
+        {
+            return View();
         }
 
         [Authorize]
-        [Route("todos")]
+        [Route("/todos")]
         [HttpGet]
         public IActionResult Todos()
         {
             return View();
         }
 
-        [Route("signup")]
-        [HttpGet]
+        [Route("/signup")]
         public IActionResult SignUp()
         {
             return View();
         }
 
-        [Route("signup")]
+        [Route("/signup")]
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> SignUp(User user)
         {
             if (db.Users.Any(x => x.Email == user.Email))
@@ -48,21 +73,21 @@ namespace AspCorePractice.Controllers
             db.Users.Add(user);
             await db.SaveChangesAsync();
 
-            await Authenticate(user.Email);
+            await AuthenticateAsync(user.Email);
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index","User");
         }
 
-        [Route("signin")]
         [HttpGet]
+        [Route("signin")]
         public IActionResult SignIn()
         {
             return View();
         }
 
-        [Route("signin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Route("/signin")]
         public async Task<IActionResult> SignIn(LoginModel model)
         {
             if (ModelState.IsValid)
@@ -70,16 +95,16 @@ namespace AspCorePractice.Controllers
                 User user = await db.Users.FirstOrDefaultAsync(u => u.Email == model.Email && u.Password == model.Password);
                 if (user != null)
                 {
-                    await Authenticate(model.Email);
+                    await AuthenticateAsync(model.Email);
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index");
                 }
                 ModelState.AddModelError("", "Некорректные логин и(или) пароль");
             }
             return View(model);
         }
 
-        private async Task Authenticate(string userName)
+        private async Task AuthenticateAsync(string userName)
         {
             var claims = new List<Claim>
             {
@@ -95,7 +120,7 @@ namespace AspCorePractice.Controllers
         public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index");
         }
     }
 }

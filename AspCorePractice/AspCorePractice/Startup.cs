@@ -35,14 +35,10 @@ namespace AspCorePractice
                   options.LoginPath = new PathString("/signin");
               });
             services.AddControllersWithViews();
-
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory, ILogger<Startup> logger)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILogger<Startup> logger)
         {
-            loggerFactory.AddFile(Path.Combine(Directory.GetCurrentDirectory(), "logger.txt"));
-            var fileLogger = loggerFactory.CreateLogger("FileLogger");
-
             if (env.IsDevelopment()) { app.UseDeveloperExceptionPage(); }
             else { app.UseExceptionHandler("/Home/Error"); app.UseHsts(); }
 
@@ -50,26 +46,38 @@ namespace AspCorePractice
             app.UseStaticFiles();
             app.UseRouting();
             app.UseAuthentication();
-            app.UseAuthorization();    
+            app.UseAuthorization();
+
+            app.Use(async (context, next) =>
+            {
+                logger.LogInformation("LogInformation {0}", context.Request.Path);
+                context.Response.Headers.Add("X-Checked-By", $"{Configuration["lastName"]}");
+                await next.Invoke();
+            });
+
+            app.Use(async (context, next) =>
+            {
+                var stringQuery = context.Request.Query["r"].ToString();
+                context.Response.Redirect(stringQuery);
+                await next.Invoke();
+            });
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
-                    name: "default", "/", new { controller = "Home", action = "Index" });
+                name: "default",
+                pattern: "{controller=Home}/{action=Index}/{id?}");
+
+                endpoints.MapControllerRoute(
+                    name: "/", "/", new { controller = "User", action = "Index" });
 
                 endpoints.MapGet("/hello", async context =>
-                {
-                    logger.LogInformation("LogInformation {0}", context.Request.Path);
-                    fileLogger.LogError("Exception {0}", context.Request.Path);
-                    context.Response.Headers.Add("X-Checked-By", $"{Configuration["lastName"]}");
+                {   
                     await context.Response.WriteAsync($"Hello, {Configuration["name"]}");
                 });
                 endpoints.MapGet("/hello.json", async context =>
                 {
                     await context.Response.WriteAsync($"Hello, {Configuration["name"]}." + "{" + $"data: {Configuration["phrase"]}" + "}");
-                    logger.LogInformation("LogInformation {0}", context.Request.Path);
-                    fileLogger.LogError("Exception {0}", context.Request.Path);
-                    context.Response.Headers.Add(" X-Checked-By", $"{Configuration["lastName"]}");
                 });
             });
         }

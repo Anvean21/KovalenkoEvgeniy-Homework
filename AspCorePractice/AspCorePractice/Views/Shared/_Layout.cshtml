@@ -24,17 +24,17 @@
                         @if (User.Identity.IsAuthenticated)
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" href="logout">LogOut(@User.Identity.Name)</a>
+                                <a class="nav-link text-dark" href="/logout">LogOut(@User.Identity.Name)</a>
                             </li>
                         }
                         else
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" href="signin">Sign In</a>
+                                <a class="nav-link text-dark" href="/signin">Sign In</a>
                             </li>
                         }
                         <li class="nav-item">
-                            <a class="nav-link text-dark" href="todos">Do list</a>
+                            <a class="nav-link text-dark" href="/todos">Do list</a>
                         </li>
 
                     </ul>
