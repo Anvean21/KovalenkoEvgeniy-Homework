@@ -27,16 +27,9 @@ namespace AspCorePractice.Controllers
 
         public IActionResult ExceptionView()
         {
-            try
-            {
-                int y = 0;
-                int i = 2 / y;
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex.Message);
-                throw;
-            }
+            int y = 0;
+            int i = 2 / y;
+
             return View();
         }
 
@@ -75,7 +68,7 @@ namespace AspCorePractice.Controllers
 
             await AuthenticateAsync(user.Email);
 
-            return RedirectToAction("Index","User");
+            return RedirectToAction("Index", "User");
         }
 
         [HttpGet]

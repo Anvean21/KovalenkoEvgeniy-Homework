@@ -34,11 +34,13 @@ namespace AspCorePractice
                 {
                   options.LoginPath = new PathString("/signin");
               });
+            services.AddTransient<ILogger,Logger<Startup>>();
             services.AddControllersWithViews();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILogger<Startup> logger)
         {
+
             if (env.IsDevelopment()) { app.UseDeveloperExceptionPage(); }
             else { app.UseExceptionHandler("/Home/Error"); app.UseHsts(); }
 
@@ -47,6 +49,8 @@ namespace AspCorePractice
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
+
+            app.UseMiddleware<ExceptionHandlerMiddleware>();
 
             app.Use(async (context, next) =>
             {
