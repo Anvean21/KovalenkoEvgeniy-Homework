@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="calculator.js" defer></script>
+
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <div><label>Fisrt Number:</label><input type="number" name="first" placeholder="input number"/></div>
+        <div><label>Second Number:</label><input type="number" name="second" placeholder="input number"/></div>
+        <div><label>Select an action:</label>
+        <select name="action">
+        <option>+</option>
+        <option>-</option>
+        <option>*</option>
+        <option>/</option>
+        </select>
+        </div>
+        <div><input type="button" name="send" value="Calculate"/></div>
+        <div><label>Result:</label><input type="text" name="result" placeholder="result"/></div>
+    </form>
+</body>
+</html>
